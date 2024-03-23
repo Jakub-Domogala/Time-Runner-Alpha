@@ -6,10 +6,10 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     // Static instance of the singleton
-    private static GameMaster _instance => Instance;
+    private static GameMaster _instance ;
 
     // Public property to access the singleton instance
-    public static GameMaster Instance;
+    public static GameMaster Instance => _instance;
 
     [SerializeField] public float timeMultiplayer;
     [SerializeField] public float timer;
@@ -20,13 +20,13 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
-            Instance = this;
+            _instance = this;
         }
     }
     void Start()
