@@ -39,7 +39,12 @@ public class GameMaster : MonoBehaviour
     {
         timer = Time.time;
         timeMultiplayer += (Time.deltaTime * timeIncrease);
+        //UpdateText();
+    }
+
+    void UpdateText()
+    {
         text.text = timeMultiplayer.ToString();
-        text2.text = (timer*timeMultiplayer).ToString();
+        text2.text = (timer * timeMultiplayer).ToString();
     }
 }
