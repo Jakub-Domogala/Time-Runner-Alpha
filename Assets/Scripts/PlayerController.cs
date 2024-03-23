@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
+    private Animator animator;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -24,9 +27,23 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
+
         // Player movement
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+
+        if(moveInput < 0)
+        {
+            transform.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (moveInput > 0)
+        {
+            transform.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        animator.SetFloat("Speed", Mathf.Abs(moveInput));
+
+        animator.SetBool("isJumping", !isGrounded);
+        animator.SetBool("isFalling", rb.velocity.y < 0);
 
         // Player jump
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
