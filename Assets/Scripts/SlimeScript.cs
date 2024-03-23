@@ -16,6 +16,11 @@ public class SlimeScript : MonoBehaviour
             Debug.LogWarning("Brak punktów docelowych. Dodaj punkty do tablicy waypoints.");
             return;
         }
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            waypoints[i].position = new Vector3(waypoints[i].position.x, transform.position.y, waypoints[i].position.z);
+        }
+
 
         // SprawdŸ czy przeciwnik osi¹gn¹³ bie¿¹cy punkt docelowy
         if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
@@ -23,6 +28,7 @@ public class SlimeScript : MonoBehaviour
             // PrzejdŸ do nastêpnego punktu docelowego
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }
+
 
         // Poruszaj siê w kierunku bie¿¹cego punktu docelowego
         MoveTowardsWaypoint();
@@ -34,6 +40,16 @@ public class SlimeScript : MonoBehaviour
         Vector3 direction = (waypoints[currentWaypointIndex].position - transform.position).normalized;
 
         // Przesuñ przeciwnika w tym kierunku z zadan¹ szybkoœci¹
-        transform.Translate(direction * movementSpeed * Time.deltaTime);
+        transform.Translate(direction * movementSpeed * Time.deltaTime * GameMaster.Instance.timeMultiplayer);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("kolizja");
+        // SprawdŸ, czy obiekt wejœcia jest graczem
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("kolizja z Graczem");
+        }
     }
 }
