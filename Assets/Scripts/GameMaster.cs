@@ -14,6 +14,9 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public float timeMultiplayer;
     [SerializeField] public float timer;
     [SerializeField] public float timeIncrease;
+    [SerializeField] public float multiplayerUpperLimit = 5;
+    [SerializeField] public float multiplayerLowerLimit = 1;
+    [SerializeField] public bool isDecrease = false;
 
     [SerializeField] TMP_Text text;
     [SerializeField] TMP_Text text2;
@@ -38,13 +41,34 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
         timer = Time.time;
-        timeMultiplayer += (Time.deltaTime * timeIncrease);
-        //UpdateText();
+        SetTimeMultiplayer();
+        UpdateText();
     }
 
+    void SetTimeMultiplayer()
+    {
+        _ = isDecrease ? timeMultiplayer -= (Time.deltaTime * timeIncrease) : timeMultiplayer += (Time.deltaTime * timeIncrease);
+        timeMultiplayer = Mathf.Clamp(timeMultiplayer, multiplayerLowerLimit, multiplayerUpperLimit);
+    }
+
+    public void SetTimeMultiplayer(float multi)
+    {
+        timeMultiplayer = Mathf.Clamp(multi, multiplayerLowerLimit, multiplayerUpperLimit);
+    }
+
+    public void DecreaseMultiplayer()
+    {
+        timeMultiplayer = Mathf.Clamp(timeMultiplayer / 2, multiplayerLowerLimit, multiplayerUpperLimit);
+    }
+    public void IncreaseMultiplayer()
+    {
+        timeMultiplayer = Mathf.Clamp(timeMultiplayer * 2, multiplayerLowerLimit, multiplayerUpperLimit);
+    }
     void UpdateText()
     {
         text.text = timeMultiplayer.ToString();
-        text2.text = (timer * timeMultiplayer).ToString();
+        //timer = Time.time * timeMultiplayer;
+        text2.text = timer.ToString();
+        
     }
 }
