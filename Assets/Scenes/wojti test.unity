@@ -233,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796883584683478323, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 3796883584683478323, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_LocalPosition.y
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796883584683478323, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4
+      value: -0.9411765
       objectReference: {fileID: 0}
     - target: {fileID: 4347427874962644965, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_Lens.FarClipPlane
