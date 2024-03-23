@@ -27,6 +27,7 @@ public class TimerMultiplayerObject : MonoBehaviour
                 GameMaster.Instance.IncreaseMultiplayer();
                 break;
         }
+        Destroy(this.gameObject);
     }
 }
 

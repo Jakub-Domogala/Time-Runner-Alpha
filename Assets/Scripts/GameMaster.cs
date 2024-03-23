@@ -18,8 +18,6 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public float multiplayerLowerLimit = 1;
     [SerializeField] public bool isDecrease = false;
 
-    [SerializeField] TMP_Text text;
-    [SerializeField] TMP_Text text2;
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,7 +40,6 @@ public class GameMaster : MonoBehaviour
     {
         timer = Time.time;
         SetTimeMultiplayer();
-        UpdateText();
     }
 
     void SetTimeMultiplayer()
@@ -63,12 +60,5 @@ public class GameMaster : MonoBehaviour
     public void IncreaseMultiplayer()
     {
         timeMultiplayer = Mathf.Clamp(timeMultiplayer * 2, multiplayerLowerLimit, multiplayerUpperLimit);
-    }
-    void UpdateText()
-    {
-        text.text = timeMultiplayer.ToString();
-        //timer = Time.time * timeMultiplayer;
-        text2.text = timer.ToString();
-        
     }
 }

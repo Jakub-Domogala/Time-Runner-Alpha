@@ -7,7 +7,7 @@ public class ShootingEnemy : MonoBehaviour
     [SerializeField] float timeToShot;
     [SerializeField] GameObject projectile;
     public Transform firePoint;
-    private float nextFireTime;
+    private float nextFireTime = 2;
     private void Update()
     {
         // Check if it's time to fire
@@ -16,7 +16,7 @@ public class ShootingEnemy : MonoBehaviour
             // Fire bullet
             Fire();
             // Set next fire time
-            nextFireTime = Time.time + timeToShot;
+            nextFireTime = Time.time + timeToShot / GameMaster.Instance.timeMultiplayer;
            
         }
     }
