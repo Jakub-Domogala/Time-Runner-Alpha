@@ -22,16 +22,12 @@ public class JD_character_move_script : MonoBehaviour
 
     void Update()
     {
-        // Check if the character is on the ground
         isGrounded = IsGrounded();
 
-        // Get input from the horizontal axis (A and D keys, left and right arrow keys)
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        // Update the animator with the movement speed
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
-        // Flip the character sprite based on the direction
         if (horizontalInput > 0)
         {
             transform.localScale = new Vector3(1, 1, 1); // Face right
@@ -41,7 +37,6 @@ public class JD_character_move_script : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1); // Face left
         }
 
-        // Jumping
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, 0); // Reset vertical velocity
@@ -51,7 +46,6 @@ public class JD_character_move_script : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Use FixedUpdate for Physics-based updates
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
     }
@@ -60,14 +54,10 @@ public class JD_character_move_script : MonoBehaviour
 
     private bool IsGrounded()
     {
-        // Bounds of the BoxCollider2D
         Bounds bounds = boxCollider.bounds;
-        // Bottom center of the collider
         Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
-        // Check for ground slightly below the bottom center of the collider
         RaycastHit2D hit = Physics2D.Raycast(bottomCenter, Vector2.down, groundCheckDistance, whatIsGround);
 
-        // If the raycast hits something on the ground layer, the character is grounded
         return hit.collider != null;
     }
 
