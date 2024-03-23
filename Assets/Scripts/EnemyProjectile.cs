@@ -13,4 +13,10 @@ public class EnemyProjectile : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    IEnumerable TimeToDie()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
+    }
 }
