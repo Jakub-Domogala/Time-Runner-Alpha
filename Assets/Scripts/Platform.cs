@@ -17,21 +17,41 @@ public class Platform : MonoBehaviour
     void Start()
     {
         // Ustawienie platformy na pierwszym punkcie docelowym
-        plaformTransform.position = waypoints[currentWaypointIndex].position;
+        transform.position = waypoints[currentWaypointIndex].position;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Sprawdzenie czy platforma osi¹gnê³a aktualny punkt docelowy
-        if (Vector2.Distance(plaformTransform.position, waypoints[currentWaypointIndex].position) < 0.1f)
+        if (Vector2.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
         {
             // Przejœcie do nastêpnego punktu docelowego
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }
 
         // Poruszanie platformy w kierunku aktualnego punktu docelowego z zadan¹ prêdkoœci¹
-        plaformTransform.position = Vector2.MoveTowards(plaformTransform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime * GameMaster.Instance.timeMultiplayer);
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime * GameMaster.Instance.timeMultiplayer);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("kolizja");
+        // SprawdŸ, czy obiekt wejœcia jest graczem
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("kolizja z Graczem");
+            // Ustaw obiekt gracza jako dziecko platformy
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        // Jeœli gracz opuœci platformê, to przestaje siê poruszaæ razem z ni¹
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 
     // Rysowanie linii ³¹cz¹cych punkty docelowe platformy w trybie edycji
