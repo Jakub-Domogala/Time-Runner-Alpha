@@ -45,14 +45,14 @@ public class Canvas : MonoBehaviour
 
     public void PlayOpeningAnimation()
     {
-        image1.transform.DOMoveX(-960, 0.5f);
-        image2.transform.DOMoveX( -960, 0.5f);
+        image1.transform.DOLocalMoveX(-2000, 0.5f);
+        image2.transform.DOLocalMoveX(-1000, 0.5f);
 
     }
     public void PlayClosingAnimation()
     {
-        image1.transform.DOMoveX(0, 0.5f);
-        image2.transform.DOMoveX(960*2, 0.5f);
+        image1.transform.DOLocalMoveX(-950, 0.5f);
+        image2.transform.DOLocalMoveX(1000, 0.5f);
 
     }
 }
