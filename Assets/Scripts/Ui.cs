@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Ui : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] Slider volumeSlider; // Slider do ustawiania g³oœnoœci
 
-    private void Start()
+    void Start()
     {
+        // Ustawienie pocz¹tkowych wartoœci sliderów
+        volumeSlider.value = AudioListener.volume;
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
     }
 
+    // Metoda wywo³ywana po zmianie wartoœci na sliderze g³oœnoœci
+    public void OnVolumeChanged()
+    {
+        float volume = volumeSlider.value;
+        AudioListener.volume = volume;
+    }
 
     public void QuitGame()
     {
