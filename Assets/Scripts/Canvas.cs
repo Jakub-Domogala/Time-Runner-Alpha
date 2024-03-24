@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -11,6 +12,7 @@ public class Canvas : MonoBehaviour
     public Transform image2;
 
     public TMP_Text text;
+    public TMP_Text timer;
     // Static instance of the singleton
     private static Canvas _instance;
 
@@ -19,7 +21,8 @@ public class Canvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = GameMaster.Instance.timeMultiplayer.ToString();
+        text.text = Math.Round(GameMaster.Instance.timeMultiplayer,2).ToString();
+        timer.text = Math.Round(GameMaster.Instance.timerModified,3).ToString();
         PlayOpeningAnimation();
     }
     void Awake()
@@ -36,7 +39,8 @@ public class Canvas : MonoBehaviour
 
     void Update()
     {
-        text.text = GameMaster.Instance.timeMultiplayer.ToString();
+        text.text = Math.Round(GameMaster.Instance.timeMultiplayer, 2).ToString();
+        timer.text = Math.Round(GameMaster.Instance.timerModified, 3).ToString();
     }
 
     public void PlayOpeningAnimation()

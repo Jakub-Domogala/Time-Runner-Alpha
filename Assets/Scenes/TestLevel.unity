@@ -10951,7 +10951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455811894167148304, guid: d14c5fb4aa8daed4a93c63e596ecccf9, type: 3}
       propertyPath: calculation
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1455811894167148304, guid: d14c5fb4aa8daed4a93c63e596ecccf9, type: 3}
       propertyPath: timeIncrease
