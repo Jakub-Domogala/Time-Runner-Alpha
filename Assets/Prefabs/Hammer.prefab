@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.7860947, y: -1.1252184, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -169,17 +169,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.021173656
-      value: 0.07306169
-      inSlope: -1.6117066
-      outSlope: -1.6117066
+      time: 0.08018233
+      value: 0.0103465915
+      inSlope: -0.85175043
+      outSlope: -0.85175043
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.30898643
-      value: -0.39080805
+      time: 0.50339866
+      value: -0.3501281
       inSlope: -0.00012006054
       outSlope: -0.00012006054
       tangentMode: 0
@@ -187,8 +187,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.9966929
-      value: 0.06418161
+      time: 1.000004
+      value: 0.010200449
       inSlope: -0.008923883
       outSlope: -0.008923883
       tangentMode: 0
@@ -198,4 +198,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  doorSpeed: 0.1
+  doorSpeed: 0.05
+  cyclesToWait: 0

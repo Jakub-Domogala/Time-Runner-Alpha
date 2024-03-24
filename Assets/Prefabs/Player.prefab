@@ -100,7 +100,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2344759065257181054}
-  - {fileID: 1140208247587044250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7087213631439612460
@@ -239,7 +238,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  ceilCheck: {fileID: 1140208247587044250}
 --- !u!50 &8668517190371551082
 Rigidbody2D:
   serializedVersion: 4

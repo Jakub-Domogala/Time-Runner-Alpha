@@ -504,11 +504,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d2f2e565a87b8440959e7ce9e2b6079, type: 3}
---- !u!1 &1418246006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7630347105600550871, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
-  m_PrefabInstance: {fileID: 1764940639}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1483345864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25447,10 +25442,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2344759065257181054, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.318
-      objectReference: {fileID: 0}
     - target: {fileID: 2697636770387771824, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -25467,32 +25458,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7241344821645503277, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7630347105600550871, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7630347105600550871, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267611346272271465, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
-      propertyPath: ceilCheck
-      value: 
-      objectReference: {fileID: 1305973012}
     - target: {fileID: 8743539213458054490, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 43559339951578138, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1305973012}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7630347105600550871, guid: 90f1d1c765a870a4cb5f621254be4954, type: 3}
       insertIndex: -1
