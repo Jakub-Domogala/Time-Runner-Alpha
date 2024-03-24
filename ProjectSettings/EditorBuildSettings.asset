@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 2e5785875b8f4824bb6fc565a01b777f
+  - enabled: 1
+    path: Assets/Scenes/wojti test.unity
+    guid: 3caa406ce7754c44695310f13d3f3297
   m_configObjects: {}
