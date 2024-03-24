@@ -7,7 +7,8 @@ public class openDoors : MonoBehaviour
     
     public AnimationCurve positionCurveY;
     public float doorSpeed = 1.0f;
-
+    public float cyclesToWait = 0.0f;
+        
     private BoxCollider2D boxCollider;
     private Animator animator;
     private AnimationClip[] animationClips;
@@ -21,6 +22,7 @@ public class openDoors : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
 
+        
 
         // Ensure that curves are not null
         if ( positionCurveY == null)
@@ -48,9 +50,14 @@ public class openDoors : MonoBehaviour
 
     void Update()
     {
+        if(GameMaster.Instance.timerModified <= cyclesToWait / doorSpeed * 0.667f)
+        {
+            animator.speed = 0;
+            return;
+        }
         // Get the current animation state info
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        animator.speed = doorSpeed;
+        animator.speed = doorSpeed * GameMaster.Instance.timeMultiplayer;
 
         // Evaluate animation curves and update collider size and position
         float t = stateInfo.normalizedTime % 1.0f;

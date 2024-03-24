@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Check if the player is grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.15f, groundLayer);
 
 
         // Player movement

@@ -18,11 +18,12 @@ public class killOnTouch : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollision2D(Collision2D collision)
     {
-        if (other.gameObject.tag == "Player")
+        Debug.Log("chuj");
+        if (collision.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().Die();
+            collision.gameObject.GetComponent<PlayerController>().Die();
         }
     }
 }
