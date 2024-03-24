@@ -21,10 +21,7 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-
-            // Za³aduj ponownie bie¿¹c¹ scenê
-            SceneManager.LoadScene(currentSceneName);
+            Reset();
         }
         if(!pauseMenu.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -51,6 +48,7 @@ public class PauseManager : MonoBehaviour
     {
         // Pobierz nazwê bie¿¹cej sceny
         string currentSceneName = SceneManager.GetActiveScene().name;
+        DataBase.Instance.Time = GameMaster.Instance.timerModified;
 
         // Za³aduj ponownie bie¿¹c¹ scenê
         SceneManager.LoadScene(currentSceneName);

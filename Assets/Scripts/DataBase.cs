@@ -7,6 +7,7 @@ public class DataBase : MonoBehaviour
     // Statyczne pole przechowuj¹ce instancjê klasy
     private static DataBase instance;
     private float volume = 1.0f;
+    private float time = 0.0f;
 
     // Metoda dostêpu do instancji klasy
     public static DataBase Instance
@@ -56,5 +57,10 @@ public class DataBase : MonoBehaviour
     {
         get { return volume; }
         set { volume = value; }
+    }
+    public float Time
+    {
+        get { return time; }
+        set { time = time + value; }
     }
 }
