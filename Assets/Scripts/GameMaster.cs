@@ -95,6 +95,7 @@ public class GameMaster : MonoBehaviour
 
     public void Next()
     {
+        DataBase.Instance.Time = timerModified;
         StartCoroutine(NextLevel());
     }
     public IEnumerator RestartLevel()

@@ -8,7 +8,7 @@ public class back_to_menu : MonoBehaviour
 
     public void Start()
     {
-        text.text = "your point: " + DataBase.Instance.Time;
+        text.text = "Your total time is: " + DataBase.Instance.Time;
     }
 
     public void back_to_main_menu()
