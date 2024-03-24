@@ -10690,6 +10690,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1455811894167148304, guid: d14c5fb4aa8daed4a93c63e596ecccf9, type: 3}
+      propertyPath: isDecrease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455811894167148304, guid: d14c5fb4aa8daed4a93c63e596ecccf9, type: 3}
+      propertyPath: calculation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455811894167148304, guid: d14c5fb4aa8daed4a93c63e596ecccf9, type: 3}
+      propertyPath: timeIncrease
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2633440756987515974, guid: d14c5fb4aa8daed4a93c63e596ecccf9, type: 3}
       propertyPath: m_Name
       value: GameMaster
@@ -10799,6 +10811,10 @@ PrefabInstance:
     - target: {fileID: 3254314713638002460, guid: 48a0d351c281064448950e20bf95c210, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380105254455952915, guid: 48a0d351c281064448950e20bf95c210, type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4380105254455952915, guid: 48a0d351c281064448950e20bf95c210, type: 3}
       propertyPath: waypoints.Array.size
