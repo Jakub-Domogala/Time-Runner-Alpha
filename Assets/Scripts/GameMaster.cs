@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour
@@ -17,7 +19,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public float multiplayerUpperLimit = 5;
     [SerializeField] public float multiplayerLowerLimit = 1;
     [SerializeField] public bool isDecrease = false;
-
+    [SerializeField] TypeOfCalculation calculation;
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,8 +46,19 @@ public class GameMaster : MonoBehaviour
 
     void SetTimeMultiplayer()
     {
-        _ = isDecrease ? timeMultiplayer -= (Time.deltaTime * timeIncrease) : timeMultiplayer += (Time.deltaTime * timeIncrease);
+        timeMultiplayer = SetMultiplayerByFunction();
         timeMultiplayer = Mathf.Clamp(timeMultiplayer, multiplayerLowerLimit, multiplayerUpperLimit);
+    }
+
+    float SetMultiplayerByFunction()
+    {
+        switch (calculation)
+        {
+            case TypeOfCalculation.Linear:
+                return isDecrease ? timeMultiplayer - Time.deltaTime * timeIncrease :  timeMultiplayer + Time.deltaTime * timeIncrease;
+        }
+        
+        return 0;
     }
 
     public void SetTimeMultiplayer(float multi)
@@ -61,4 +74,10 @@ public class GameMaster : MonoBehaviour
     {
         timeMultiplayer = Mathf.Clamp(timeMultiplayer * 2, multiplayerLowerLimit, multiplayerUpperLimit);
     }
+}
+
+enum TypeOfCalculation
+{
+    Linear =1,
+
 }
