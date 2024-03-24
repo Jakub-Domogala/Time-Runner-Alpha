@@ -18,6 +18,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public float timer;
     [SerializeField] public float timerModified;
     [SerializeField] public float timeIncrease;
+    [SerializeField] public float timeToWait;
     [SerializeField] public float multiplayerUpperLimit = 5;
     [SerializeField] public float multiplayerLowerLimit = 1;
     [SerializeField] public bool isDecrease = false;
@@ -59,6 +60,11 @@ public class GameMaster : MonoBehaviour
         {
             case TypeOfCalculation.Linear:
                 return isDecrease ? timeMultiplayer - Time.deltaTime * timeIncrease :  timeMultiplayer + Time.deltaTime * timeIncrease;
+            case TypeOfCalculation.Custom:
+                if (!(Time.time >= timeToWait)) return timeMultiplayer;
+                timeToWait += Time.time;
+                return isDecrease ? timeMultiplayer -= timeIncrease : timeMultiplayer += timeIncrease;
+
         }
         
         return 0;
@@ -89,5 +95,6 @@ public class GameMaster : MonoBehaviour
 enum TypeOfCalculation
 {
     Linear =1,
+    Custom =2
 
 }
