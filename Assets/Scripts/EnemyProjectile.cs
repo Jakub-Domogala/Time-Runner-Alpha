@@ -7,10 +7,15 @@ public class EnemyProjectile : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.up * GameMaster.Instance.timeMultiplayer * Time.deltaTime);
+        StartCoroutine("TimeToDie");
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        if (coll.gameObject.tag == "Player")
+        {
+            GameMaster.Instance.Die();
+        }
         Destroy(this.gameObject);
     }
 

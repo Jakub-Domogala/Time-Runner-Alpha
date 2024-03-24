@@ -39,7 +39,7 @@ public class Canvas : MonoBehaviour
     public void PlayClosingAnimation()
     {
         image1.transform.DOMoveX(0, 0.5f);
-        image2.transform.DOMoveX(0, 0.5f);
+        image2.transform.DOMoveX(960*2, 0.5f);
 
     }
 }

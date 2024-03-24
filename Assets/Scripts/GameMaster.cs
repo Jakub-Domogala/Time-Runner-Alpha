@@ -87,6 +87,10 @@ public class GameMaster : MonoBehaviour
         timeMultiplayer = Mathf.Clamp(timeMultiplayer * 2, multiplayerLowerLimit, multiplayerUpperLimit);
     }
 
+    public void Die()
+    {
+        StartCoroutine(RestartLevel());
+    }
     public IEnumerator RestartLevel()
     {
         Canvas.Instance.PlayClosingAnimation();
