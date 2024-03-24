@@ -95530,7 +95530,7 @@ MonoBehaviour:
   - {fileID: 2087681655}
   - {fileID: 2087681654}
   plaformTransform: {fileID: 2070450210}
-  speed: 4
+  speed: 3
 --- !u!61 &2070450212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95744,7 +95744,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 645644992041954706, guid: 48a0d351c281064448950e20bf95c210, type: 3}
       propertyPath: speed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 645644992041954706, guid: 48a0d351c281064448950e20bf95c210, type: 3}
       propertyPath: waypoints.Array.data[0]
