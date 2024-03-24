@@ -13,7 +13,7 @@ public class Ui : MonoBehaviour
     void Start()
     {
         // Ustawienie pocz¹tkowych wartoœci sliderów
-        volumeSlider.value = AudioListener.volume;
+        volumeSlider.value = DataBase.Instance.Volume;
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
     }
@@ -23,6 +23,7 @@ public class Ui : MonoBehaviour
     {
         float volume = volumeSlider.value;
         AudioListener.volume = volume;
+        DataBase.Instance.Volume = volume;
     }
 
     public void QuitGame()
