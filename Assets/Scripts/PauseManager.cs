@@ -19,12 +19,22 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+
+            // Za³aduj ponownie bie¿¹c¹ scenê
+            SceneManager.LoadScene(currentSceneName);
+        }
         if(!pauseMenu.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0f; // Ustawienie czasu na zero zamra¿a grê
             pauseMenu.SetActive(true);
-        }else if (Input.GetKeyDown(KeyCode.Escape))
+            AudioListener.volume = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            AudioListener.volume = DataBase.Instance.Volume;
             pauseMenu.SetActive(false);
             Time.timeScale = 1f; 
         }
@@ -44,6 +54,7 @@ public class PauseManager : MonoBehaviour
 
         // Za³aduj ponownie bie¿¹c¹ scenê
         SceneManager.LoadScene(currentSceneName);
+        AudioListener.volume = DataBase.Instance.Volume;
         Time.timeScale = 1f;
     }
 
