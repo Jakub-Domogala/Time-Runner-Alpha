@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundCheck; // A transform at the player's feet to check if they're grounded
     public LayerMask groundLayer; // The layer(s) representing the ground
+    public Transform ceilCheck;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -49,6 +50,13 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+
+
+        bool getsHead = Physics2D.OverlapCircle(ceilCheck.position, 0.01f, groundLayer);
+        if(getsHead && isGrounded)
+        {
+            Die();
         }
     }
 
