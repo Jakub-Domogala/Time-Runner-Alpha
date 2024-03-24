@@ -103,8 +103,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c298e6e28855de847951a3250f74db52, type: 3}
   - {fileID: 8300000, guid: 8cd582218cca6934098891689f36fe1d, type: 3}
   - {fileID: 8300000, guid: 58928a76f9e06054e8a651cad1fe7ac8, type: 3}
+  fart: {fileID: 8300000, guid: b8415aaf28c324b458de185f0f82871d, type: 3}
   pitchBendGroup: {fileID: 24300002, guid: 1113b7f37cab1c84a8b49d6976e8dddf, type: 2}
   soundNumber: 0
+  farted: 0
+  timeToNextFart: 3
 --- !u!82 &1362669734971441254
 AudioSource:
   m_ObjectHideFlags: 0
