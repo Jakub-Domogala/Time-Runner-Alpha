@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    private float timeFalling = 0;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +47,18 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isJumping", !isGrounded);
         animator.SetBool("isFalling", rb.velocity.y < 0);
+        if(rb.velocity.y < 0 && !isGrounded)
+        {
+            timeFalling += Time.deltaTime;
+        }
+        else
+        {
+            timeFalling = 0;
+        }
+        if(timeFalling > 6f)
+        {
+            Die();
+        }
 
         // Player jump
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
