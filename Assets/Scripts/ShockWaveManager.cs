@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -15,10 +16,13 @@ public class ShockWaveManager : MonoBehaviour
     private Coroutine callingCoroutine; // Coroutine for calling the method
 
     [SerializeField] AudioClip[] sound;
+    [SerializeField] AudioClip fart;
     private AudioSource audioSource;
 
     [SerializeField]  private AudioMixerGroup pitchBendGroup;
     public int soundNumber = 0;
+    public bool farted = false;
+    public float timeToNextFart = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +31,7 @@ public class ShockWaveManager : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = sound[soundNumber];
         audioSource.loop = true; 
-        audioSource.volume = 1.0f;
+        audioSource.volume = 0.1f;
         audioSource.pitch = 1.0f;
         audioSource.Play();
         material = GetComponent<SpriteRenderer>().material;
@@ -55,35 +59,99 @@ public class ShockWaveManager : MonoBehaviour
         {
             CallShockWave();
         }
+        
+
+
     }
 
     void SetSound()
     {
-        
-        if (soundNumber !=0 && GameMaster.Instance.timeMultiplayer <= GameMaster.Instance.multiplayerUpperLimit / 3f )
+        float maxLimit = GameMaster.Instance.multiplayerUpperLimit;
+        float multiplayer = GameMaster.Instance.timeMultiplayer;
+        float editValue = multiplayer/ (maxLimit * (soundNumber +1));
+
+        audioSource.volume = editValue;
+        audioSource.pitch = 1f + editValue;
+
+        if (!farted && multiplayer <= maxLimit / 6f )
+        {
+            audioSource.Stop();
+            CallShockWave();
+            farted = true;
+            audioSource.volume = 1f;
+            audioSource.pitch = 1f;
+            audioSource.PlayOneShot(fart);
+            //Fart
+        }
+        else if (!audioSource.isPlaying && multiplayer <= maxLimit * 2f / 6f && multiplayer > maxLimit / 6f)
         {
             soundNumber = 0;
             audioSource.Stop();
             audioSource.clip = sound[soundNumber];
-            CallShockWave();
             audioSource.Play();
+
+            farted = false;
         }
-        else if (soundNumber!=1 && GameMaster.Instance.timeMultiplayer <= GameMaster.Instance.multiplayerUpperLimit * 2f / 3f && GameMaster.Instance.timeMultiplayer > GameMaster.Instance.multiplayerUpperLimit / 3f)
+        else if (!farted && multiplayer <= maxLimit * 3f / 6f && multiplayer > maxLimit * 2f/ 6f)
+        {
+            audioSource.Stop();
+            CallShockWave();
+            farted = true;
+            audioSource.volume = 1f;
+            audioSource.pitch = 1f;
+            audioSource.PlayOneShot(fart);
+            //Fart
+        }
+        else if (!audioSource.isPlaying && multiplayer <= maxLimit * 4f / 6f && multiplayer > maxLimit*3f / 6f)
         {
             soundNumber = 1;
             audioSource.Stop();
             audioSource.clip = sound[soundNumber];
-            CallShockWave();
             audioSource.Play();
+
+            farted = false;
         }
-        else if (soundNumber!=2 && GameMaster.Instance.timeMultiplayer > GameMaster.Instance.multiplayerUpperLimit * 2f / 3f)
+        else if (!farted && multiplayer <= maxLimit * 5f / 6f && multiplayer > maxLimit * 4f / 6f)
+        {
+            Debug.Log("pierd");
+            audioSource.Stop();
+            CallShockWave();
+            audioSource.volume = 1f;
+            audioSource.pitch = 1f;
+            audioSource.PlayOneShot(fart);
+            farted = true;
+        }
+        else if (!audioSource.isPlaying && multiplayer > maxLimit * 5f / 6f && multiplayer < maxLimit)
         {
             soundNumber = 2;
             audioSource.Stop();
             audioSource.clip = sound[soundNumber];
-            CallShockWave();
             audioSource.Play();
+
+            farted = false;
         }
+        else if(!farted && multiplayer == maxLimit)
+        {
+            farted = true;
+            Debug.Log("pierdmax");
+            audioSource.Stop();
+            CallShockWave();
+            audioSource.volume = 1f;
+            audioSource.pitch = 1f;
+            audioSource.PlayOneShot(fart);
+            timeToNextFart = 3f;
+        }
+
+        if (farted && multiplayer >= maxLimit)
+        {
+            if (timeToNextFart >= 0) timeToNextFart -= Time.deltaTime;
+            else
+            {
+                farted = false;
+                Debug.Log("pierd2");
+            }
+        }
+
     }
 
     private IEnumerator CallMethodRepeatedly()

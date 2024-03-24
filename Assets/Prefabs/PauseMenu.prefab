@@ -1064,6 +1064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 62592652120053781}
+  volumeSlider: {fileID: 5502511520108468922}
 --- !u!1 &4534969441933072842
 GameObject:
   m_ObjectHideFlags: 0
