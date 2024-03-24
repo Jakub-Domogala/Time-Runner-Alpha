@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameMaster : MonoBehaviour
 
     [SerializeField] public float timeMultiplayer;
     [SerializeField] public float timer;
+    [SerializeField] public float timerModified;
     [SerializeField] public float timeIncrease;
     [SerializeField] public float multiplayerUpperLimit = 5;
     [SerializeField] public float multiplayerLowerLimit = 1;
@@ -48,6 +50,7 @@ public class GameMaster : MonoBehaviour
     {
         timeMultiplayer = SetMultiplayerByFunction();
         timeMultiplayer = Mathf.Clamp(timeMultiplayer, multiplayerLowerLimit, multiplayerUpperLimit);
+        timerModified += Time.deltaTime * timeMultiplayer;
     }
 
     float SetMultiplayerByFunction()
@@ -73,6 +76,13 @@ public class GameMaster : MonoBehaviour
     public void IncreaseMultiplayer()
     {
         timeMultiplayer = Mathf.Clamp(timeMultiplayer * 2, multiplayerLowerLimit, multiplayerUpperLimit);
+    }
+
+    public IEnumerator RestartLevel()
+    {
+        Canvas.Instance.PlayClosingAnimation();
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
