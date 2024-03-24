@@ -19,8 +19,6 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public float multiplayerUpperLimit = 5;
     [SerializeField] public float multiplayerLowerLimit = 1;
     [SerializeField] public bool isDecrease = false;
-    float temp;
-    bool temp2;
     [SerializeField] TypeOfCalculation calculation;
     // Start is called before the first frame update
     void Awake()
@@ -50,27 +48,14 @@ public class GameMaster : MonoBehaviour
     {
         timeMultiplayer = SetMultiplayerByFunction();
         timeMultiplayer = Mathf.Clamp(timeMultiplayer, multiplayerLowerLimit, multiplayerUpperLimit);
-        timer = Mathf.Clamp(timer, 0, multiplayerUpperLimit);
     }
 
     float SetMultiplayerByFunction()
     {
-        if (temp2 != isDecrease)
-        {
-            temp = timer;
-        }
-        temp2 = isDecrease;
         switch (calculation)
         {
             case TypeOfCalculation.Linear:
                 return isDecrease ? timeMultiplayer - Time.deltaTime * timeIncrease :  timeMultiplayer + Time.deltaTime * timeIncrease;
-            case TypeOfCalculation.Logarithm:
-                return isDecrease ? (float)Math.Log(timer - Time.deltaTime * timeIncrease) : (float)Math.Log(timer);
-            case TypeOfCalculation.Sin:
-                return (float)Math.Sin(timer);
-            case TypeOfCalculation.proto:
-                return !isDecrease ? (float) -(-(timer * timeIncrease) - multiplayerUpperLimit + Math.Sqrt(Math.Pow((timer * timeIncrease) - multiplayerUpperLimit, 2) + 10)) / 2 :
-                    (float)(-(timer * timeIncrease) - multiplayerLowerLimit + Math.Sqrt(Math.Pow((timer * timeIncrease) - multiplayerLowerLimit, 2) + 10)) / 2;
         }
         
         return 0;
@@ -94,7 +79,5 @@ public class GameMaster : MonoBehaviour
 enum TypeOfCalculation
 {
     Linear =1,
-    Logarithm = 2,
-    Sin = 3,
-    proto =4
+
 }
