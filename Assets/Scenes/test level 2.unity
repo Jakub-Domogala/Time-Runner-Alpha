@@ -154,7 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeMultiplayer: 1
   timer: 0
+  timerModified: 0
   timeIncrease: 1
+  timeToWait: 0
   multiplayerUpperLimit: 5
   multiplayerLowerLimit: 1
   isDecrease: 0
@@ -3852,7 +3854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3254314713638002460, guid: 48a0d351c281064448950e20bf95c210, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8
+      value: -4.08
       objectReference: {fileID: 0}
     - target: {fileID: 3254314713638002460, guid: 48a0d351c281064448950e20bf95c210, type: 3}
       propertyPath: m_LocalPosition.z
