@@ -23,6 +23,8 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public float multiplayerLowerLimit = 1;
     [SerializeField] public bool isDecrease = false;
     [SerializeField] TypeOfCalculation calculation;
+
+    float timerIni;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,6 +39,7 @@ public class GameMaster : MonoBehaviour
     }
     void Start()
     {
+        timerIni = timeToWait;
         timer = Time.time;
     }
 
@@ -61,8 +64,8 @@ public class GameMaster : MonoBehaviour
             case TypeOfCalculation.Linear:
                 return isDecrease ? timeMultiplayer - Time.deltaTime * timeIncrease :  timeMultiplayer + Time.deltaTime * timeIncrease;
             case TypeOfCalculation.Custom:
-                if (!(Time.time >= timeToWait)) return timeMultiplayer;
-                timeToWait += Time.time;
+                if (!(Time.time >= timerIni)) return timeMultiplayer;
+                timerIni += timeToWait;
                 return isDecrease ? timeMultiplayer -= timeIncrease : timeMultiplayer += timeIncrease;
 
         }
