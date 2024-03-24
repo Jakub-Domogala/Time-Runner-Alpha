@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-       Debug.Log("xd");
+        GameMaster.Instance.Die();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
