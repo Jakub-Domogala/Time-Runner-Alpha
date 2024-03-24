@@ -91,11 +91,22 @@ public class GameMaster : MonoBehaviour
     {
         StartCoroutine(RestartLevel());
     }
+
+    public void Next()
+    {
+        StartCoroutine(NextLevel());
+    }
     public IEnumerator RestartLevel()
     {
         Canvas.Instance.PlayClosingAnimation();
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public IEnumerator NextLevel()
+    {
+        Canvas.Instance.PlayClosingAnimation();
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }
 
