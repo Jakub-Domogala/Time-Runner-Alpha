@@ -6,7 +6,7 @@ public class EnemyProjectile : MonoBehaviour
 {
     void Update()
     {
-        transform.Translate(Vector2.up * GameMaster.Instance.timeMultiplayer * Time.deltaTime);
+        transform.Translate(Vector2.right * GameMaster.Instance.timeMultiplayer * Time.deltaTime);
         StartCoroutine("TimeToDie");
     }
 
