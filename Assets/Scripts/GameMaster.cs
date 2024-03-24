@@ -89,11 +89,13 @@ public class GameMaster : MonoBehaviour
 
     public void Die()
     {
+        DataBase.Instance.Time = timerModified;
         StartCoroutine(RestartLevel());
     }
 
     public void Next()
     {
+        DataBase.Instance.Time = timerModified;
         StartCoroutine(NextLevel());
     }
     public IEnumerator RestartLevel()
