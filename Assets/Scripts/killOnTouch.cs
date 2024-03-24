@@ -18,7 +18,7 @@ public class killOnTouch : MonoBehaviour
         
     }
 
-    private void OnCollision2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("chuj");
         if (collision.gameObject.CompareTag("Player"))
