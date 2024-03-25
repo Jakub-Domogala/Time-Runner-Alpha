@@ -14,6 +14,8 @@ public class Ui : MonoBehaviour
     {
         // Ustawienie pocz¹tkowych wartoœci sliderów
         volumeSlider.value = DataBase.Instance.Volume;
+        DataBase.Instance.Time = 0;
+        Debug.Log(DataBase.Instance.Time);
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
     }

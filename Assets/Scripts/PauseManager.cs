@@ -19,9 +19,14 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        if (!pauseMenu.activeInHierarchy && Input.GetKeyUp(KeyCode.R) && !Input.GetKey(KeyCode.LeftShift))
         {
             Reset();
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && !pauseMenu.activeInHierarchy && Input.GetKeyUp(KeyCode.R))
+        {
+            DataBase.Instance.Time = 0;
+            SceneManager.LoadScene("test level");
         }
         if(!pauseMenu.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
         {
